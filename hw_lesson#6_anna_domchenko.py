@@ -1,9 +1,9 @@
-#1.  List (Список):
+# 1.  List (Список):
 #   a) Створіть пустий список і додайте до нього 3 різних числа. Виведіть список на екран.
 #   б) Змініть значення другого елемента в списку. Виведіть оновлений список.
 #   в) Видаліть третій елемент зі списку. Виведіть оновлений список.
 #   г) Створіть другий список, з кількома числами більшими за 10. Додайте в кінець першого списку.
-#Виведіть на екран зріз списку від третього до п'ятого елементу.
+# Виведіть на екран зріз списку від третього до п'ятого елементу.
 #   д) Поміняйте місцями найбільше та найменше число в списку.
 
 
@@ -12,16 +12,28 @@ empty_list.append(22)
 empty_list.append(33)
 empty_list.append(11)
 print("subtask a ", empty_list)
+
+
 empty_list[1] = 8
 print("subtask б ", empty_list)
+
+
 empty_list.pop(2)
 print("subtask в", empty_list)
+
 newlist = [87, 64, 30]
 empty_list.extend(newlist)
 print("subtask г ", empty_list[2:6])
-print(empty_list)
 
 
+print(empty_list, "\n")
+a = min(empty_list)
+b = max(empty_list)
+print("here our min and max come: ", a, b)
+x = empty_list.index(a)
+y = empty_list.index(b)
+empty_list[x], empty_list[y] = empty_list[y], empty_list[x]
+print(empty_list, "\n")
 
 # 2.  Tuple (Кортеж):
 #     а) Створіть кортеж з трьох різних елементів. Виведіть кортеж на екран.
@@ -30,9 +42,15 @@ print(empty_list)
 
 cool_tuple = (67, 3, 20)
 print("first subtask", cool_tuple)
-# cool_tuple[0]=12
-second_tuple =  (29, 22, 45)
-cool_tuple = cool_tuple+second_tuple
+try:
+    cool_tuple[0] = 12
+except TypeError:
+    print("You're using wrong method for this datatype")
+finally:
+    print("Tuple is not changed", cool_tuple)
+
+second_tuple = (29, 22, 45)
+cool_tuple = cool_tuple + second_tuple
 print("ololo", cool_tuple, "\n")
 
 # 3.  Set (Множина):
@@ -40,28 +58,37 @@ print("ololo", cool_tuple, "\n")
 #     б) Додайте нове значення до множини. Виведіть оновлену множину.
 #     в) Видаліть одне значення з множини. Виведіть оновлену множину.
 
-first_set={33, 55, 62, 21}
+first_set = {33, 55, 62, 21}
 print("set", first_set)
 first_set.add(39)
 print(first_set)
 first_set.discard(33)
 print(first_set, "\n")
 
-
 # 4.  Frozenset (Незмінювана множина):
 #   а) Створіть frozenset, що містить 3 різних значення. Виведіть frozenset на екран.
 #     б) Спробуйте змінити (додати або видалити) значення в frozenset. Спостереження: frozenset є незмінним, тому будь-яка спроба зміни має завершитися помилкою.
 #     в) Створіть ще один frozenset з різними значеннями. Об'єднайте два frozenset в новий frozenset. Виведіть отриманий frozenset.
 
-frozen=frozenset([35, 63, 45])
+frozen = frozenset([35, 63, 45])
 print(frozen)
-# frozen[2]=4
-# frozen.add(33)
-# frozen.discard(63)
-frozen_two=frozenset([2,6,8])
-frozen_two=frozen.union(frozen_two)
-print(frozen_two, "\n")
 
+try:
+    frozen[2] = 4
+except TypeError:
+    print("Frozenset is unchangeable")
+try:
+    frozen.add(33)
+except AttributeError:
+    print("Again, Frozenset is unchangeable")
+try:
+    frozen.discard(63)
+except:
+    print("Guess which error it it")
+
+frozen_two = frozenset([2, 6, 8])
+frozen_two = frozen.union(frozen_two)
+print(frozen_two, "\n")
 
 # 5.  String (Рядок):
 #     а) Створіть рядок, що містить ваше ім'я з маленької літери. Виведіть рядок на екран.
@@ -81,7 +108,7 @@ print("my name length is ", len(a))
 
 my_dict = {"sweets": "macaroons", "fish": "salmon", "drink": "coffee"}
 print(my_dict)
-my_dict["fruits"]="blueberries"
+my_dict["fruits"] = "blueberries"
 print(my_dict)
 del my_dict["sweets"]
 my_dict.pop("fish")
