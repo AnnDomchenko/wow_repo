@@ -18,7 +18,7 @@ empty_list[1] = 8
 print("subtask б ", empty_list)
 
 
-empty_list.pop(2)
+empty_list.__delitem__(2)
 print("subtask в", empty_list)
 
 newlist = [87, 64, 30]
@@ -97,9 +97,9 @@ print(frozen_two, "\n")
 
 name = "anna"
 print(name)
-a = name.title()
-print(a)
-print("my name length is ", len(a))
+new_name=name.replace("a", "A", 1)
+print(new_name)
+print("my name length is ", len(new_name))
 
 # 6.  Dict (Словник):
 #     а) Створіть словник, що містить пари ключ-значення про ваші улюблені продукти (наприклад: ягода -- суниця).  Виведіть словник на екран.
