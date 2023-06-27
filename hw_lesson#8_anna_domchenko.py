@@ -1,5 +1,5 @@
 """
-Читання файлу:
+1. Читання файлу:
 Відкрийте файл з текстовим вмістом.
 Прочитайте весь вміст файлу.
 Виведіть зчитаний вміст на екран.
@@ -10,7 +10,7 @@ with open("alala.txt", "r") as file:
 
 
 """
-Запис у файл:
+2. Запис у файл:
         Створіть новий файл або відкрийте існуючий.
         Запишіть у файл деякий текст.
         Закрийте файл.
@@ -22,7 +22,7 @@ with open("ololo.txt", "w") as ff:
 
 
 """
-    Пошук і заміна:
+    3. Пошук і заміна:
         Відкрийте файл з текстом.
         Прочитайте весь вміст файлу.
         Знайдіть певне слово або фразу у тексті.
@@ -36,55 +36,40 @@ print(a)
 file.close()
 
 """
-    Лічильник слів:
+    4. Лічильник слів:
         Відкрийте файл з текстом.
         Прочитайте весь вміст файлу.
         Порахуйте кількість слів у тексті.
         Виведіть результат на екран.
 """
 
-filee = open("ololo.txt", "rt")
+filee = open("ololo.txt", "r")
 data = filee.read()
 words = data.split()
 
 print('Number of words in text file :', len(words))
 
 """
-    Аналіз лог-файлу:
+    5. Аналіз лог-файлу:
         Відкрийте лог-файл.
         Прочитайте весь вміст файлу.
         Знайдіть певні події або помилки у логах.
         Виведіть знайдені події на екран або запишіть їх у новий файл.
 """
 
-#find the TRACE level logs in the log file and output to console the line with error and number of line
-with open(r"log.txt", 'r') as fp:
-    for l_no, line in enumerate(fp):
-        # search string
-        if 'TRACE' in line:
-            print('\nLine Number:', l_no)
-            print('Line:', line)
+log = open("log.txt", "r")
+log1 = log.read()
+myList=log1.split("\n")
 
+info_logs = [s for s in myList if "INFO" in s]
+print(*info_logs)
 
-#print the entire content of log file in console
-with open(r"log.txt", 'r') as fp:
-    fulllog=fp.read()
-    print(fulllog)
+warning_logs = [s for s in myList if "WARNING" in s]
+print(*warning_logs)
 
-
-# print the lines where there are warning level logs from main log file into new file
-input_file = 'log.txt'
-output_file = 'log_with_warnings'
-
-search_word = 'WARNING'
-
-with open(input_file, 'r') as input_file, open(output_file, 'w') as output_file:
-    for line in input_file:
-        if search_word in line:
-            output_file.write(line)
 
 """
-    Копіювання файлу:
+    6. Копіювання файлу:
         Відкрийте вихідний файл, який потрібно скопіювати.
         Відкрийте цільовий файл, куди буде здійснюватися копіювання.
         Прочитайте вміст вихідного файлу.
@@ -92,7 +77,7 @@ with open(input_file, 'r') as input_file, open(output_file, 'w') as output_file:
         Закрийте обидва файли.
 """
 
-with open("ololo.txt", "r") as cp, open("alala.txt", "w") as ccp:
-    q = cp.read()
-    ccp.write(q)
+with open("ololo.txt", "r") as to_copy, open("alala.txt", "w") as destination_file:
+    q = to_copy.read()
+    destination_file.write(q)
 
