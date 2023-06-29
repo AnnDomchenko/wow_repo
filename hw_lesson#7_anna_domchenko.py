@@ -5,15 +5,15 @@
 """
 
 
-def taking_some_input():
-    try:
-        var = int(input("Write some integer here: "))
-        print(var, " is your input")
-    except ValueError:
-        print("Entered not valid data")
-
-
-taking_some_input()
+# def taking_some_input():
+#     try:
+#         var = int(input("Write some integer here: "))
+#         print(var, " is your input")
+#     except ValueError:
+#         print("Entered not valid data")
+#
+#
+# taking_some_input()
 
 
 """
@@ -23,16 +23,16 @@ taking_some_input()
 """
 
 
-def concatenate_or_sum(str1, str2):
+def concatenate_or_sum(val1, val2):
     try:
-        num1 = int(str1)
-        num2 = int(str2)
+        num1 = int(val1)
+        num2 = int(val2)
         result = num1 + num2
-    except ValueError:
-        result = str1 + str2
+    except ValueError or TypeError:
+        result = str(val1) + str(val2)
     print(result)
 
-concatenate_or_sum("ss", "4")
+concatenate_or_sum("text", 8)
 
 """
 3.  Створити функцію, що приймає значення з консолі. Якщо значення не можна привести до числа,
@@ -41,39 +41,39 @@ concatenate_or_sum("ss", "4")
 """
 
 
-def int_acceptor():
-    while True:
-        try:
-            value=int(input("Enter: "))
-            print("thanks and bye")
-            return value
-        except ValueError:
-            print("enter sth else")
-
-int_acceptor()
+# def int_acceptor():
+#     while True:
+#         try:
+#             value=int(input("Enter: "))
+#             print("thanks and bye")
+#             return value
+#         except ValueError:
+#             print("enter sth else")
+#
+# int_acceptor()
 
 """
 Створити власне виключення. Наприклад OnlyEvenError. Створити функцію check_digit(), яка приймає число.
   Якщо число не парне, то породжувати це своє виключення, якщо парне, то повертати його (return)
 """
 
-class OnlyEvenError(Exception):
-    pass
-
-
-def check_digit(a):
-    if a%2!=0:
-        raise OnlyEvenError
-    else:
-        print("Fine, ", a)
-
-try:
-    a=int(input("enter: "))
-    check_digit(a)
-except OnlyEvenError:
-    print("OnlyEven error successfully raised")
-except ValueError:
-    print("You wrote sth wrong at all")
+# class OnlyEvenError(Exception):
+#     pass
+#
+#
+# def check_digit(a):
+#     if a%2!=0:
+#         raise OnlyEvenError
+#     else:
+#         print("Fine, ", a)
+#
+# try:
+#     a=int(input("enter: "))
+#     check_digit(a)
+# except OnlyEvenError:
+#     print("OnlyEven error successfully raised")
+# except ValueError:
+#     print("You wrote sth wrong at all")
 
 """
 5.  Створити функцію, що буде приймати число як аргумент і викликАти в тілі функцію check_digit, в яку передавати це число.
@@ -84,22 +84,22 @@ except ValueError:
       Використовувати try-except-else-finally
 """
 
-def some_func(a):
-    try:
-        check_digit(a)
-    except OnlyEvenError:
-        a += 1
-        print(a)
-    except TypeError:
-        print("bad input!")
-    else:
-        a *= 2
-        print(a)
-    finally:
-        print("Я все одно завжди щось друкую")
-
-
-some_func(6)
-some_func(3)
-some_func(4.5)
-some_func("fgh")
+# def some_func(a):
+#     try:
+#         check_digit(a)
+#     except OnlyEvenError:
+#         a += 1
+#         print(a)
+#     except TypeError:
+#         print("bad input!")
+#     else:
+#         a *= 2
+#         print(a)
+#     finally:
+#         print("Я все одно завжди щось друкую")
+#
+#
+# some_func(6)
+# some_func(3)
+# some_func(4.5)
+# some_func("fgh")
