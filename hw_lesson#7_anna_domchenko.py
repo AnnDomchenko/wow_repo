@@ -28,7 +28,7 @@ def concatenate_or_sum(val1, val2):
         num1 = int(val1)
         num2 = int(val2)
         result = num1 + num2
-    except ValueError or TypeError:
+    except (ValueError, TypeError):
         result = str(val1) + str(val2)
     print(result)
 
