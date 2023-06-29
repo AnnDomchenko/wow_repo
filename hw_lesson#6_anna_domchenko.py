@@ -18,7 +18,7 @@ empty_list[1] = 8
 print("subtask б ", empty_list)
 
 
-empty_list.__delitem__(2)
+del empty_list[2]
 print("subtask в", empty_list)
 
 newlist = [87, 64, 30]
