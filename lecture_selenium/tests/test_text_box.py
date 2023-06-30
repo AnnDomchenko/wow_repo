@@ -1,3 +1,4 @@
+import pytest
 from selenium.common import NoSuchElementException
 
 from lecture_selenium.pages.page_text_box import PageTextBox
@@ -30,13 +31,10 @@ class TestTextBox:
         page = PageTextBox(chrome)
         page.open().set_email(user_data.get('bad_email'))
         page.submit()
-        assert page.get_email_field_attribute("class") == "mr-sm-2 field-error form-control"
-        try:
-            assert page.get_email() is False
-        except NoSuchElementException:
-            print("it's just a negative test")
-
-
+        # assert page.get_email_field_attribute("class") == "mr-sm-2 field-error form-control"
+        assert "field-error" in page.get_email_field_attribute("class")
+        with pytest.raises(NoSuchElementException) as q:
+            assert page.get_email() != True
 
     def test_curr_addr(self, chrome):
         page=PageTextBox(chrome)
@@ -71,7 +69,8 @@ class TestTextBox:
         page.open().set_full_name(user_data.get('fullname')).set_email(user_data.get('bad_email'))\
             .set_curr_addr(user_data.get('curr_addr')).set_perm_addr(user_data.get('perm_addr'))
         page.submit()
-        try:
+        assert "field-error" in page.get_email_field_attribute("class")
+        with pytest.raises(NoSuchElementException) as q:
             fullname=page.get_full_name()
             mail=page.get_email()
             addr1=page.get_curr_addr()
@@ -80,7 +79,5 @@ class TestTextBox:
             assert mail != user_data['bad_email']
             assert addr1 != user_data['curr_addr']
             assert addr2 != user_data['perm_addr']
-        except NoSuchElementException:
-            print("negative tests done")                                          
 
 
